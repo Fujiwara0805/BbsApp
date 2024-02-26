@@ -1,7 +1,21 @@
-import Image from "next/image";
+import BBSCardList from "@/components/layouts/BBSCardList/BBSCardList";
 
-export default function Home() {
+/* 掲示板データ全取得 */
+const getBbsAll = async () => {
+  const res = await fetch("http://localhost:3000/api/post", {
+    cache: "no-store",
+  });
+  const data = await res.json();
+  return data;
+};
+
+const Home = async () => {
+  const posts = await getBbsAll();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+    <main>
+      <BBSCardList />
+    </main>
   );
-}
+};
+
+export default Home;
