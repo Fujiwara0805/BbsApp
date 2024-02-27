@@ -1,19 +1,21 @@
 import BBSCardList from "@/components/layouts/BBSCardList/BBSCardList";
+import { BBSData } from "@/types/types";
 
 /* 掲示板データ全取得 */
 const getBbsAll = async () => {
   const res = await fetch("http://localhost:3000/api/post", {
     cache: "no-store",
   });
-  const data = await res.json();
-  return data;
+  const BbsAllData: BBSData[] = await res.json();
+  return BbsAllData;
 };
 
 const Home = async () => {
-  const posts = await getBbsAll();
+  const BbsAllData = await getBbsAll();
+
   return (
     <main>
-      <BBSCardList />
+      <BBSCardList BbsAllData={BbsAllData} />
     </main>
   );
 };
