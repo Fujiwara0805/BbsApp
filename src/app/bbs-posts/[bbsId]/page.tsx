@@ -2,7 +2,7 @@ import React from "react";
 import { BBSData } from "@/types/types";
 import Link from "next/link";
 
-/* 掲示板詳細データ取得 */
+/* 掲示板詳細取得処理 */
 const getBbsDetail = async (id: number) => {
   const res = await fetch(`http://localhost:3000/api/post/${id}`, {
     cache: "no-store",
